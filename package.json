@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/NileshOfficial/nodeSessions/issues"
   },
-  "homepage": "https://github.com/NileshOfficial/nodeSessions#readme"
+  "homepage": "https://github.com/NileshOfficial/nodeSessions#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "http": "0.0.1-security"
+  }
 }
