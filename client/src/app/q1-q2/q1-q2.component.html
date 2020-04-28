@@ -1,0 +1,61 @@
+<div class="users">
+    <h3 class="heading">
+        <span class="text">User Details</span>
+        <div class="search">
+            <input #inp placeholder="username" type="text" (input)="getAutoCompleteList()">
+            <ul class="userlist">
+                <ng-container *ngFor="let user of userList">
+                    <li>
+                        <a (click)="setInput(user)">
+                            {{user}}
+                        </a>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+    </h3>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+        </tr>
+        <tr *ngFor="let user of userData">
+            <td>{{user.username}}</td>
+            <td>{{user.password}}</td>
+            <td>{{user.firstname}}</td>
+            <td>{{user.lastname}}</td>
+        </tr>
+    </table>
+</div>
+<div class="students">
+    <h3 class="heading">
+        <span class="text">
+            Students
+        </span>
+        <div class="radios">
+            <span class="info">Filter by:</span>
+            <span>
+                <input type="radio" name="branch" (click)="filterStudentData('computer science')">cse
+            </span>
+            <span>
+                <input type="radio" name="branch" (click)="filterStudentData('law')">law
+            </span>
+            <span>
+                <input type="radio" name="branch" (click)="filterStudentData('mba')">mba
+            </span>
+            <button role="button" class="clear" (click)="clearFilter()">&#x2715;</button>
+        </div>
+    </h3>
+    <table>
+        <tr>
+            <th>Student Name</th>
+            <th>Branch</th>
+        </tr>
+        <tr *ngFor="let student of studentData">
+            <td>{{student.firstname}}</td>
+            <td>{{student.branch}}</td>
+        </tr>
+    </table>
+</div>
