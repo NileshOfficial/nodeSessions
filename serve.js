@@ -139,15 +139,23 @@ const http = require('http');
 const url = require('url');
 
 const server = http.createServer((req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
     if (req.method === 'GET') {
         const parsedUrl = url.parse(req.url, true);
 
         switch (parsedUrl.pathname) {
             case "/users": {
-                if (parsedUrl.query['search']) {
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.write(filterUserData(parsedUrl.query['search']));
-                    res.end();
+                if (Object.keys(parsedUrl.query).length !== 0) {
+                    if (parsedUrl.query['search'] === '') {
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.write(JSON.stringify([]));
+                        res.end();
+                    }
+                    else {
+                        res.writeHead(200, { 'Content-Type': 'application/json' });
+                        res.write(filterUserData(parsedUrl.query['search']));
+                        res.end();
+                    }
                 } else {
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.write(JSON.stringify(userData));
@@ -171,9 +179,9 @@ const server = http.createServer((req, res) => {
             case "/home": {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.write(JSON.stringify({
-                    sessionName: "REST Apis",
-                    sessionDate: "Apr 28, 2020",
-                    training: "NodeJS"
+                    "session-name": "REST Apis",
+                    "session-date": "Apr 28, 2020",
+                    "training": "NodeJS"
                 }));
                 res.end();
             }
@@ -182,9 +190,9 @@ const server = http.createServer((req, res) => {
             case "/about": {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.write(JSON.stringify({
-                    name: "Nilesh Kumar",
-                    competency: "MEAN",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    "name": "Nilesh Kumar",
+                    "competency": "MEAN",
+                    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 }));
                 res.end();
             }
@@ -193,8 +201,8 @@ const server = http.createServer((req, res) => {
             case "/contactUs": {
                 res.writeHead(200, { 'Content-Type': 'application/json' });
                 res.write(JSON.stringify({
-                    phone: "96-XXX-XXX30",
-                    email: "dummyMail@dummy.com"
+                    "phone": "96-XXX-XXX30",
+                    "email": "dummyMail@dummy.com"
                 }));
                 res.end();
             }
