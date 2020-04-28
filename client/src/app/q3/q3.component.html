@@ -1,0 +1,19 @@
+<div class="container">
+    <nav>
+        <a (click)="getHomeData()">Home</a>
+        <a (click)="getAboutData()">About Us</a>
+        <a (click)="getContactData()">Contact</a>
+    </nav>
+    <main>
+        <div class="content">
+            <span class="item" *ngFor="let pair of data">
+                <span>
+                    {{pair[0]}}:
+                </span>
+                <span>
+                    {{pair[1]}}
+                </span> 
+            </span>
+        </div>
+    </main>
+</div>

@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+nav {
+    max-width: 200px;
+    padding-top: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 100%;
+}
+
+nav a {
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+main .cotent {
+    border: 1px solid #777;
+    border-radius: 8px;
+}
+
+main .content .item {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 24px;
+}
+
+.item span:first-child {
+    margin-right: 2rem;
+}

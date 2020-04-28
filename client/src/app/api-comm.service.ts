@@ -29,4 +29,14 @@ export class ApiCommService {
       params: new HttpParams().set('search', query)
     });
   }
+
+  getHomeData(): Observable<Object> {
+    return this.http.get("http://localhost:3001/home");
+  }
+  getAboutData(): Observable<Object> {
+    return this.http.get("http://localhost:3001/about");
+  }
+  getContactData(): Observable<Object> {
+    return this.http.get("http://localhost:3001/contactUs");
+  }
 }
