@@ -1,6 +1,57 @@
 class userUtils {
     constructor() {
-        this.userData = [];
+        this.userData =  [
+            {
+                "username": "hamilton",
+                "firstname": "rocha",
+                "lastname": "vinson"
+            },
+            {
+                "username": "doyle",
+                "firstname": "holt",
+                "lastname": "olsen"
+            },
+            {
+                "username": "carver",
+                "firstname": "johnnie",
+                "lastname": "cooley"
+            },
+            {
+                "username": "kirkland",
+                "firstname": "kelly",
+                "lastname": "bryant"
+            },
+            {
+                "username": "duncan",
+                "firstname": "todd",
+                "lastname": "cox"
+            },
+            {
+                "username": "kline",
+                "firstname": "stacey",
+                "lastname": "peck"
+            },
+            {
+                "username": "rosales",
+                "firstname": "pansy",
+                "lastname": "nunez"
+            },
+            {
+                "username": "koch",
+                "firstname": "margery",
+                "lastname": "marks"
+            },
+            {
+                "username": "atkins",
+                "firstname": "tasha",
+                "lastname": "sears"
+            },
+            {
+                "username": "boone",
+                "firstname": "wise",
+                "lastname": "hunt"
+            }
+        ]
     }
 
     getUserData() {
