@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-details',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
-
+  
+  onSubmit(form: NgForm) {
+    this.http.addUser(form.value).subscribe(data=>{});
+    this.router.navigate(['/', 'home']);
+  }
 }

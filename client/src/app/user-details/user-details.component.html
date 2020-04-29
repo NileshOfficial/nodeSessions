@@ -1,1 +1,9 @@
-<p>user-details works!</p>
+<div class="formWrapper">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <h3>User Details</h3>
+        <input ngModel name="username" type="text" placeholder="username" required>
+        <input ngModel name="firstname" type="text" placeholder="first name" required>
+        <input ngModel name="lastname" type="text" placeholder="last name" required>
+        <button type="submit" [disabled]="!f.valid">Submit</button>
+    </form>
+</div>
