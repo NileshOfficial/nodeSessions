@@ -1,1 +1,13 @@
-<p>home works!</p>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    <tr *ngFor="let user of userData">
+        <td>{{user.username}}</td>
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td><a (click)="deleteUser(user.username)"> delete </a></td>
+    </tr>
+</table>
