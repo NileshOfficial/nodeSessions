@@ -4,52 +4,62 @@ class userUtils {
             {
                 "username": "hamilton",
                 "firstname": "rocha",
-                "lastname": "vinson"
+                "lastname": "vinson",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "doyle",
                 "firstname": "holt",
-                "lastname": "olsen"
+                "lastname": "olsen",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "carver",
                 "firstname": "johnnie",
-                "lastname": "cooley"
+                "lastname": "cooley",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "kirkland",
                 "firstname": "kelly",
-                "lastname": "bryant"
+                "lastname": "bryant",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "duncan",
                 "firstname": "todd",
-                "lastname": "cox"
+                "lastname": "cox",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "kline",
                 "firstname": "stacey",
-                "lastname": "peck"
+                "lastname": "peck",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "rosales",
                 "firstname": "pansy",
-                "lastname": "nunez"
+                "lastname": "nunez",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "koch",
                 "firstname": "margery",
-                "lastname": "marks"
+                "lastname": "marks",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "atkins",
                 "firstname": "tasha",
-                "lastname": "sears"
+                "lastname": "sears",
+                "createdOn": "2020-4-28"
             },
             {
                 "username": "boone",
                 "firstname": "wise",
-                "lastname": "hunt"
+                "lastname": "hunt",
+                "createdOn": "2020-4-28"
             }
         ]
     }
