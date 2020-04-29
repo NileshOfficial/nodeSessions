@@ -7,11 +7,11 @@ exports.routeConfig = function (server) {
 
     server.post('/addUser', (req, res) => {
         userUtils.addUser(req.body);
-        res.status(200).send("success");
+        res.status(200).json({success: true});
     });
 
     server.delete('/deleteUser', (req, res) => {
         userUtils.deleteUser(req.body.username);
-        res.status(200).send("success");
+        res.status(200).json({success: true});
     });
 }
