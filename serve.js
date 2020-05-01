@@ -5,6 +5,8 @@ const routes = require('./routes').router;
 
 server.use(express.json());
 
-routes(server);
+server.use('/', routes);
+
+// routes(server);
 
 server.listen(port, () => console.log(`server listening on port ${3000}`));
