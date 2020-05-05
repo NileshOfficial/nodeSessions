@@ -1,20 +1,22 @@
-const goose = require('mongoose');
-const item = require('../schemas/item.schema');
+const itemModel = require('../schemas/item.schema');
 
 module.exports.getItems = async () => {
-    return await item.find();
+    return await itemModel.find();
 }
 
 module.exports.addItem = async (data) => {
-    return await item.create(data);
+    for(let item of data) {
+        await itemModel.findOneAndUpdate({name: item.name}, {$set: item}, {upsert: true});
+    }
+    return {success: true};
 }
 
 module.exports.updateExistingItem = async (id, updatedData) => {
-    return await item.findByIdAndUpdate(id, { $set: updatedData });;
+    return await itemModel.findByIdAndUpdate(id, { $set: updatedData });;
 }
 
 module.exports.deleteItem = async (id) => {  
-    return await item.deleteMany({
+    return await itemModel.deleteMany({
         _id: id
     })
 }

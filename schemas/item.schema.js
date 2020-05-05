@@ -46,7 +46,6 @@ const item = new goose.Schema({
 });
 
 item.pre('findOneAndUpdate', function() {
-    console.log("midware")
     this.set({ updatedDate: Date.now() });
 });
 
