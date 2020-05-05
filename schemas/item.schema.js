@@ -2,7 +2,7 @@ const goose = require("mongoose");
 
 const item = new goose.Schema({
     name: {
-        type: Date,
+        type: String,
         required: true
     },
 
@@ -15,6 +15,7 @@ const item = new goose.Schema({
     
     unit: {
         type: String,
+        required: true
     },
 
     expiryDate: {
@@ -24,7 +25,6 @@ const item = new goose.Schema({
     createdDate: {
         type: Date,
         default: Date.now,
-        enum: ["Grocery", "Medical", "Fruits&Veg", "Berverages", "Babycare", "Cleaning"]
     },
 
     updatedDate: {
@@ -33,16 +33,20 @@ const item = new goose.Schema({
     },
 
     category: {
-        type: String
+        type: String,
+        enum: ["Grocery", "Medical", "Fruits&Veg", "Berverages", "Babycare", "Cleaning"],
+        default: "Grocery"
     },
     
     location: {
         type: String,
-        enum: ["Store", "Kitchen"]
+        enum: ["Store", "Kitchen"],
+        default: "Store"
     }
 });
 
-item.pre('update', function() {
+item.pre('findOneAndUpdate', function() {
+    console.log("midware")
     this.set({ updatedDate: Date.now() });
 });
 

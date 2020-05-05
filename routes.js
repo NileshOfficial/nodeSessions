@@ -1,8 +1,8 @@
 const router = require("express").Router();
-
-router.get("/items", (req, res) => {res.send("sdf")});
-router.post("/items", (req, res) => {res.send("sdf")});
-router.patch("/item/:id", (req, res) => {res.send("sdf")});
-router.delete("/item/:id", (req, res) => {res.send("sdf")});
+const itemOpsHandlers = require('./controllers/item.controller');
+router.get("/items", itemOpsHandlers.getItems);
+router.post("/items", itemOpsHandlers.addItem);
+router.patch("/item/:id", itemOpsHandlers.updateExistingItem);
+router.delete("/item/:id", itemOpsHandlers.deleteItem);
 
 module.exports = router;
