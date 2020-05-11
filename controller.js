@@ -11,3 +11,8 @@ module.exports.signup = async (req, res) => {
     const result = await service.addUser(req.body);
     res.json(result);
 }
+
+module.exports.login = async (req, res) => {
+    const result = await service.authenticateLogin(req.body)
+    res.json(result);
+}

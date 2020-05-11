@@ -1,7 +1,5 @@
 const bcrypt = require('bcrypt');
 
-module.exports.createHash = async (plaintext) => {
-    return await bcrypt.hash(plaintext, 5);
-}
+module.exports.createHash = async (plaintext) => await bcrypt.hash(plaintext, 5);
 
-module.exports.compareHash = async () => {}
+module.exports.compareHash = async (plaintext, hash) => await bcrypt.compare(plaintext, hash);
