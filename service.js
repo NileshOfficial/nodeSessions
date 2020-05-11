@@ -1,5 +1,6 @@
 const userModel = require('./userSchema');
 const hash = require('./hash');
+const tokenService = require('./tokenService');
 
 module.exports.addUser = async (userDetails) => {
 
@@ -10,7 +11,19 @@ module.exports.addUser = async (userDetails) => {
     else {
         const hashedPassword = await hash.createHash(userDetails.password);
         userDetails['password'] = hashedPassword;
-        return await userModel.insertMany([userDetails]);
+        
+        try {
+            await userModel.insertMany([userDetails]);
+        } catch(err) {
+            return { err: "db operation failed" };
+        }
+        
+        const payload = {
+            name: userDetails.name,
+            email: userDetails.email
+        }
+        const token = tokenService.generateToken(payload);
+        return { success: true, token };
     }
 }
 
@@ -21,9 +34,15 @@ module.exports.authenticateLogin = async (credentials) => {
         return { err: "invalid username or password" };
     else {
         const match = await hash.compareHash(credentials.password, userData.password);
-        
-        if (match)
-            return { success: true };
+
+        if (match) {
+            const payload = {
+                name: credentials.name,
+                email: credentials.email
+            }
+            const token = tokenService.generateToken(payload);
+            return { success: true, token };
+        }
         else
             return { err: "invalid username or password" }
     }
