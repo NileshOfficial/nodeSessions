@@ -1,4 +1,6 @@
+const passport = require('passport');
 const service = require('./service');
+const tokenService = require('./tokenService');
 
 module.exports.home = (req, res) => {
     res.json({
@@ -12,7 +14,21 @@ module.exports.signup = async (req, res) => {
     res.json(result);
 }
 
-module.exports.login = async (req, res) => {
-    const result = await service.authenticateLogin(req.body)
-    res.json(result);
+module.exports.login = async (req, res, next) => {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) {
+            return res.json(err);
+        }
+
+        if (!user) {
+            return res.json({ error: 'invalid username or password' });
+        }
+
+        const payload = {
+            name: req.body.name,
+            email: req.body.email
+        }
+        const token = tokenService.generateToken(payload);
+        return res.json({ success: true, token });
+    })(req, res, next);
 }

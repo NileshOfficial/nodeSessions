@@ -3,7 +3,6 @@ const hash = require('./hash');
 const tokenService = require('./tokenService');
 
 module.exports.addUser = async (userDetails) => {
-
     try {
         const existingUser = await userModel.findOne({ email: userDetails.email });
 
@@ -31,27 +30,18 @@ module.exports.addUser = async (userDetails) => {
     }
 }
 
-module.exports.authenticateLogin = async (credentials) => {
+module.exports.authenticateLogin = async (username, password, done) => {
     try {
-        const userData = await userModel.findOne({ email: credentials.email });
+        const userData = await userModel.findOne({ email: username });
 
-        if (!userData)
-            return { err: "invalid username or password" };
+        if (!userData) return done(null, false, { err: "invalid username or password" });
         else {
-            const match = await hash.compareHash(credentials.password, userData.password);
-
-            if (match) {
-                const payload = {
-                    name: credentials.name,
-                    email: credentials.email
-                }
-                const token = tokenService.generateToken(payload);
-                return { success: true, token };
-            }
-            else
-                return { err: "invalid username or password" }
+            const match = await hash.compareHash(password, userData.password);
+            
+            if (!match) return done(null, false, { err: "invalid username or password" });
+            else return done(null, userData);
         }
     } catch (error) {
-        return { err: "db operation failed" };
+        return done(null, false, { err: "db operation failed" });
     }
-}
+} 
