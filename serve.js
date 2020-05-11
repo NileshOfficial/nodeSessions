@@ -1,3 +1,4 @@
+const goose = require("mongoose");
 const express = require("express");
 const server = express();
 
@@ -8,6 +9,21 @@ const PORT = 3000;
 server.use(express.json());
 server.use("/", routes);
 
-server.listen(PORT, () => {
-    console.log(`server running on port: ${PORT}`)
+goose.connect(`mongodb+srv://nilesh:${encodeURI('nilesh')}@cluster0-4f2ih.mongodb.net/test?retryWrites=true&w=majority`,
+    {
+        useNewUrlParser: "true",
+        useFindAndModify: false
+    }
+);
+
+goose.connection.on("error", err => {
+    console.log("err", err);
+});
+
+goose.connection.on("connected", (err, res) => {
+    console.log("mongoose is connected");
+    
+    server.listen(PORT, () => {
+        console.log(`server running on port: ${PORT}`)
+    });
 });

@@ -11,7 +11,6 @@ const userSchema = new goose.Schema({
     },
     password: {
         type: String,
-        min: 5,
         required: true 
     }
 });
