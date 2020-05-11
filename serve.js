@@ -4,6 +4,8 @@ const server = express();
 const routes = require("./routes");
 
 const PORT = 3000;
+
+server.use(express.json());
 server.use("/", routes);
 
 server.listen(PORT, () => {
