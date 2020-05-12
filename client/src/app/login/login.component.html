@@ -2,5 +2,8 @@
     <h3>Login</h3>
     <input type="email" ngModel name="username" placeholder="email" required>
     <input type="password" ngModel name="password" placeholder="password" required>
-    <button type="submit" [disabled]="!f.valid">Login</button>
+    <div class="footer">
+        <button type="submit" [disabled]="!f.valid">Login</button>
+        <a [routerLink]="['/signup']">Sign Up</a>
+    </div>
 </form>

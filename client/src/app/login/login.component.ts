@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,18 @@ import { ApiService } from '../api.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
     this.api.login(form.value).subscribe(data => {
-      console.log(data);
-      this.api.setToken(data.token);
-    })
+      if (!data.err) {
+        this.api.setToken(data.token);
+        this.router.navigate(["/home"]);
+      }
+    });
   }
 
 }

@@ -18,7 +18,7 @@ export class ApiService {
     return this.http.post("http://localhost:3000/login", userdata);
   }
 
-  home() {
+  home(): Observable<any> {
     return this.http.get("http://localhost:3000/home", {
       headers: new HttpHeaders().set("authorization", `Bearer ${this.token}`)
     });

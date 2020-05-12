@@ -3,5 +3,8 @@
     <input type="text" ngModel name="name" placeholder="name" required>
     <input type="email" ngModel name="email" placeholder="email" required>
     <input type="password" ngModel name="password" placeholder="password" required>
-    <button type="submit" [disabled]="!f.valid">Sign up</button>
+    <div class="footer">
+        <button type="submit" [disabled]="!f.valid">Sign Up</button>
+        <a [routerLink]="['/login']">Login</a>
+    </div>
 </form>
