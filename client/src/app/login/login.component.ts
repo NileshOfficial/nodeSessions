@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     this.api.login(form.value).subscribe(data => {
       if (!data.err) {
         this.api.setToken(data.token);
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/home", encodeURIComponent(data.token)]);
       }
     });
   }

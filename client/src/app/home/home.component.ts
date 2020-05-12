@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  data: any;
-  constructor(private api: ApiService, private router: Router) { }
+  data: any = {};
+  constructor(private api: ApiService, private router: Router, private currentRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.api.home().subscribe(data => {
-      if(!data.err) {
-        this.data = data;
-      } else {
-        this.router.navigate(["/login"]);
-      }
-    });
+    const token = decodeURIComponent(this.currentRoute.snapshot.params['token']);
+    if (!token)
+      this.router.navigate(["/login"]);
+    else {
+      this.api.home(token).subscribe(data => {
+        if (!data.err) {
+          this.data = data;
+        } else {
+          this.router.navigate(["/login"]);
+        }
+      });
+    }
   }
 
 }

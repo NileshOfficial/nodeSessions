@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
     this.api.signup(form.value).subscribe(data => {
       if(!data.err) {
         this.api.setToken(data.token);
-        this.router.navigate(["/home"]);
+        this.router.navigate(["/home", encodeURIComponent(data.token)]);
       }
     });
   }

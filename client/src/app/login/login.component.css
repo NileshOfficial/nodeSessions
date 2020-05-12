@@ -10,6 +10,12 @@ form {
     margin: 50px auto;
 }
 
+form h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 form input[type="text"],
 form input[type="password"],
 form input[type="email"] {
@@ -34,4 +40,15 @@ form button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+a.sso {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 20px;
+    color: #777;
+    background-color: #dedede;
+    border-radius: 3px;
+    border: 1px solid #ccc;
 }
