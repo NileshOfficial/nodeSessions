@@ -32,3 +32,16 @@ module.exports.login = async (req, res, next) => {
         return res.json({ success: true, token });
     })(req, res, next);
 }
+
+module.exports.oauth = (req, res, next) => {
+    passport.authenticate( 'google', function (err, user, info) {
+        if(err) {
+			return next(err);
+        }
+        if(!user)
+            return res.redirect(`http://localhost:4200/login`);
+        const token = tokenService.generateToken({success: true});
+        res.redirect(`http://localhost:4200/home/${encodeURIComponent(token)}`);
+        // return res.json({success: true, token});
+    })(req, res, next);
+}
