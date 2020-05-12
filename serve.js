@@ -1,6 +1,7 @@
 const goose = require("mongoose");
 const express = require("express");
 const passport = require('passport');
+const cors = require('cors');
 
 const passportconfig = require('./passport.config').config;
 
@@ -10,6 +11,7 @@ const routes = require("./routes");
 
 const PORT = 3000;
 
+server.use(cors());
 server.use(express.json());
 server.use(passport.initialize());
 
