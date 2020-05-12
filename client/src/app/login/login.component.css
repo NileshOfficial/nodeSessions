@@ -1,0 +1,30 @@
+form {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    border: 1px solid #777;
+    border-radius: 8px;
+    box-sizing: border-box;
+    max-width: 500px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+}
