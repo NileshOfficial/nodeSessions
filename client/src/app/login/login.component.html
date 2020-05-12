@@ -1,6 +1,6 @@
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <h3>Login</h3>
-    <input type="email" ngModel name="email" placeholder="email" required>
+    <input type="email" ngModel name="username" placeholder="email" required>
     <input type="password" ngModel name="password" placeholder="password" required>
-    <button type="submit" [disabled]="f.valid">Login</button>
+    <button type="submit" [disabled]="!f.valid">Login</button>
 </form>

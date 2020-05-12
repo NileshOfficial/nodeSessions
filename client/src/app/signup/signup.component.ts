@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ApiService } from '../api.service';
 
 
 @Component({
@@ -9,13 +10,15 @@ import { NgForm } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm) {
-    console.log(form.value);
+    this.api.signup(form.value).subscribe(data => {
+      this.api.setToken(data.token);
+    })
   }
 
 }

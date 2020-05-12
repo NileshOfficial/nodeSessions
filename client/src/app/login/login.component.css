@@ -7,6 +7,7 @@ form {
     max-width: 500px;
     padding-left: 2rem;
     padding-right: 2rem;
+    margin: 50px auto;
 }
 
 form input[type="text"],
