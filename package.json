@@ -1,23 +1,31 @@
 {
-  "name": "nodesessions",
+  "name": "mean_bootcamp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Mongoose basics exercise",
   "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.12"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.1.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node index.js",
+    "test": "mocha --timeout 10000",
+    "exercise": "test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NileshOfficial/nodeSessions.git"
+    "url": "git+https://github.com/Shefali360/MEAN_Bootcamp.git"
   },
-  "author": "nilesh",
+  "author": "Shefali",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/NileshOfficial/nodeSessions/issues"
+    "url": "https://github.com/Shefali360/MEAN_Bootcamp/issues"
   },
-  "homepage": "https://github.com/NileshOfficial/nodeSessions#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.3"
-  }
+  "homepage": "https://github.com/Shefali360/MEAN_Bootcamp#readme"
 }
